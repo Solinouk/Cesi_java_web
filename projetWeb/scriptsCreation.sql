@@ -34,7 +34,7 @@ CREATE TABLE Task
     Id           SERIAL PRIMARY KEY,
     TaskName     VARCHAR(50) not null,
     CreationDate date        Not null,
-    UpdatedOn    Date        Not null,
+    UpdatedOn    Date        ,
     StatusId     int     not null,
     PersonId     int     not null,
     CONSTRAINT Status_Id_fkey FOREIGN KEY (StatusId) REFERENCES Status (Id),
