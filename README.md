@@ -1,3 +1,5 @@
+
+![Diagramme UML](https://github.com/Solinouk/Cesi_java_web/blob/main/Diagramme/Diagramme%20de%20classe.png)
 # Cesi_java_web
 
 #***Priorisation des fonctionnalités***
