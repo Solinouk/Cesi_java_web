@@ -20,16 +20,6 @@ public class Task {
         this.statusId = statusId;
     }
 
-    public int getRoleId() {
-        return RoleId;
-    }
-
-    public void setRoleId(int roleId) {
-        RoleId = roleId;
-    }
-
-    private int RoleId;
-
     public String getTaskName() {
         return taskName;
     }
