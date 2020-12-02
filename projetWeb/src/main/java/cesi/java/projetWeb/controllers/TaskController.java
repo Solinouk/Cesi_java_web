@@ -48,8 +48,8 @@ public class TaskController {
 
     @DeleteMapping("/tasks/{id}")
     public @ResponseBody
-    void delete(@RequestBody Task task, @PathVariable String id) {
+    void delete( @PathVariable String id) {
         int intId = Integer.parseInt(id);
-        taskRepository.delete(task, intId);
+        taskRepository.delete( intId);
     }
 }

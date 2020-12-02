@@ -17,12 +17,6 @@ public class TaskRepository {
     @Autowired
     JdbcTemplate jdbc;
 
-    ResultSet rs;
-    Connection conn;
-    Statement st;
-
-
-
     public List<Task> findAll() {
 
         String sql = "SELECT id, taskname, creationdate, updatedon, statusid, personid FROM task";
@@ -53,11 +47,11 @@ public class TaskRepository {
                 "update task set taskname = ?, updatedon = current_date where id = ?",
                 task.getTaskName(), id);
     }
-    public void delete(Task task, int id) {
+
+    public void delete( int id) {
         jdbc.update(
                 "delete from task WHERE  id = ?", id);
     }
-
 
 }
 
