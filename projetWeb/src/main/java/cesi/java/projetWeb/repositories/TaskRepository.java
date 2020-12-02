@@ -28,13 +28,14 @@ public class TaskRepository {
         return tasks;
     }
 
-    public Task findOne(int id) {
+    public List<Task> findOne(int id) {
         String sql = "SELECT id, taskname, creationdate, updatedon, statusid, personid FROM task WHERE id = ?";
 
-        return (Task) jdbc.queryForObject(
+        List tasks = jdbc.query(
                 sql,
                 new Object[]{id},
                 new BeanPropertyRowMapper(Task.class));
+        return tasks;
     }
 
     public void insert(Task task) {
