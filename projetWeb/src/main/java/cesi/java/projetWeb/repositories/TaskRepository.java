@@ -6,9 +6,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.List;
 
 @Repository
@@ -20,20 +17,18 @@ public class TaskRepository {
     public List<Task> findAll() {
 
         String sql = "SELECT id, taskname, creationdate, updatedon, statusid, personid FROM task";
-        List<Task> tasks = jdbc.query(
-                sql,
-                new BeanPropertyRowMapper(Task.class));
 
-        return tasks;
+        return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class));
     }
 
-    public Task findOne(int id) {
-        String sql = "SELECT id, taskname, creationdate, updatedon, statusid, personid FROM task WHERE id = ?";
+    public List<Task> findOne(int id) {
 
-        return (Task) jdbc.queryForObject(
+        String sql = "SELECT id, taskname, creationdate, updatedon, statusid, personid FROM task WHERE id =" +
+                id;
+
+        return jdbc.query(
                 sql,
-                new Object[]{id},
-                new BeanPropertyRowMapper(Task.class));
+                new BeanPropertyRowMapper<>(Task.class));
     }
 
     public void insert(Task task) {
@@ -48,10 +43,18 @@ public class TaskRepository {
                 task.getTaskName(), id);
     }
 
-    public void delete( int id) {
+    public void delete(int id) {
         jdbc.update(
                 "delete from task WHERE  id = ?", id);
     }
 
+    public List<Task> getTasksByStatusId(int statusId) {
+
+        String sql = "select * from task where statusId =" +
+                statusId;
+
+        return jdbc.query(sql,
+                new BeanPropertyRowMapper<>(Task.class));
+    }
 }
 
