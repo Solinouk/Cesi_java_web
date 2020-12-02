@@ -17,23 +17,11 @@ import static java.lang.Integer.parseInt;
 @RequestMapping("/api/v1")
 public class TaskController {
 
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
 
     public TaskController(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
-
- /*   @GetMapping("/tasks")
-    List<Task> All() {
-        return taskRepository.findAll();
-    }
-
-    @GetMapping("/tasks/{id}")
-    public @ResponseBody
-    Task One(@PathVariable("id") String id) {
-        int intId = Integer.parseInt(id);
-        return taskRepository.findOne(intId);
-    }*/
 
     @PostMapping("/tasks")
     public @ResponseBody
@@ -56,12 +44,6 @@ public class TaskController {
         taskRepository.delete(intId);
     }
 
-    /*@GetMapping("/tasks/status")
-    public @ResponseBody
-    List<Task> getTasksByStatus(@RequestParam(name = "statusId") String statusId) {
-        int intStatusId = parseInt(statusId);
-        return taskRepository.getTasksByStatusId(intStatusId);
-    }*/
 
     @GetMapping("/tasks")
     public @ResponseBody
@@ -76,11 +58,8 @@ public class TaskController {
             int intId = Integer.parseInt(id);
             return taskRepository.findOne(intId);
         }
-
         else {
             return taskRepository.findAll();
         }
-
     }
-
 }
