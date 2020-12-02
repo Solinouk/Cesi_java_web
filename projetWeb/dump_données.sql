@@ -4,13 +4,13 @@ insert into role(rolename) values ('Utilisateur');
 insert into role(rolename) values ('Modérateur');
 
 
-insert into person (name, alias, datecreation, roleid) values('Valentin', 'Nawak Chevelu', current_date, 1);
-insert into person (name, alias, datecreation, roleid) values('Solenne ', 'Solinouk', current_date, 1);
-insert into person (name, alias, datecreation, roleid) values('Grégary', 'Gudule', current_date, 2);
-insert into person (name, alias, datecreation, roleid) values('Kevin', 'Batman', current_date, 2);
-insert into person (name, alias, datecreation, roleid) values('Samuel', 'Sam', current_date, 3);
-insert into person (name, alias, datecreation, roleid) values('Médéric', 'Médou', current_date, 3);
-insert into person (name, alias, datecreation, roleid) values('Hector', 'Thor', current_date, 3);
+insert into person (name, alias, creationdate, roleid) values('Valentin', 'Nawak Chevelu', current_date, 1);
+insert into person (name, alias, creationdate, roleid) values('Solenne ', 'Solinouk', current_date, 1);
+insert into person (name, alias, creationdate, roleid) values('Grégary', 'Gudule', current_date, 2);
+insert into person (name, alias, creationdate, roleid) values('Kevin', 'Batman', current_date, 2);
+insert into person (name, alias, creationdate, roleid) values('Samuel', 'Sam', current_date, 3);
+insert into person (name, alias, creationdate, roleid) values('Médéric', 'Médou', current_date, 3);
+insert into person (name, alias, creationdate, roleid) values('Hector', 'Thor', current_date, 3);
 
 insert into status (statusname) values ('en cours');
 insert into status (statusname) values ('terminée');

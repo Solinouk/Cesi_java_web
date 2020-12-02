@@ -12,12 +12,29 @@ public class Task {
     private int statusId;
     private int personId;
 
-    public int getStatusId() {
-        return statusId;
+    public Task() {
     }
 
-    public void setStatusId(int statusId) {
+    public Task(int id, String taskName, Date creationDate, Date updatedOn, int statusId, int personId) {
+        this.id = id;
+        this.taskName = taskName;
+        this.creationDate = creationDate;
+        this.updatedOn = updatedOn;
         this.statusId = statusId;
+        this.personId = personId;
+    }
+
+    public Task(int id, String taskName) {
+        this.id = id;
+        this.taskName = taskName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTaskName() {
@@ -43,12 +60,13 @@ public class Task {
     public void setUpdatedOn(Date updatedOn) {
         this.updatedOn = updatedOn;
     }
-    public void setId(Integer id) {
-        this.id = id;
+
+    public int getStatusId() {
+        return statusId;
     }
 
-    public Integer getId() {
-        return id;
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
     }
 
     public int getPersonId() {
@@ -57,15 +75,5 @@ public class Task {
 
     public void setPersonId(int personId) {
         this.personId = personId;
-    }
-
-    public Task() {
-
-    }
-
-    public Task(String taskName, Date creationDate, Date updatedOn) {
-        this.taskName = taskName;
-        this.creationDate = creationDate;
-        this.updatedOn = updatedOn;
     }
 }
