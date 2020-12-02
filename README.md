@@ -4,7 +4,10 @@
 
 #***Priorisation des fonctionnalités***
 - Crud sur les tâches
-- 
+- Crud sur les personnes
+- filtre sur les tâches en fonction du statut
+- filtre sur les personnes en fonction de leur rôle
+- interface graphique
 
 
 
