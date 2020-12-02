@@ -39,4 +39,17 @@ public class TaskController {
     }
 
 
+    @PutMapping("/tasks/{id}")
+    public @ResponseBody
+    void update(@RequestBody Task task,  @PathVariable String id) {
+        int intId = Integer.parseInt(id);
+           taskRepository.update(task, intId);
+    }
+
+    @DeleteMapping("/tasks/{id}")
+    public @ResponseBody
+    void delete(@RequestBody Task task, @PathVariable String id) {
+        int intId = Integer.parseInt(id);
+        taskRepository.delete(task, intId);
+    }
 }
