@@ -25,10 +25,18 @@ public class TaskController {
         return taskRepository.findAll();
     }
 
-  /*  @PostMapping("/tasks")
-    Task task(@RequestBody Task task) {
-        return TaskRepository.save(task);
-    }*/
+    @GetMapping("/tasks/{id}")
+    public @ResponseBody
+    Task One(@PathVariable("id") String id) {
+        int intId = Integer.parseInt(id);
+        return taskRepository.findOne(intId);
+    }
+
+    @PostMapping("/tasks")
+    public @ResponseBody
+    void insert(@RequestBody Task task) {
+        taskRepository.insert(task);
+    }
 
 
 }

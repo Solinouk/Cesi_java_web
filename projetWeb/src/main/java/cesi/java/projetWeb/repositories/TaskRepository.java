@@ -22,5 +22,19 @@ public class TaskRepository {
         return tasks;
     }
 
+    public Task findOne(int id) {
+        String sql = "SELECT id, taskname, creationdate, updatedon, statusid, personid FROM task WHERE id = ?";
+
+        return (Task) jdbc.queryForObject(
+                sql,
+                new Object[]{id},
+                new BeanPropertyRowMapper(Task.class));
+    }
+
+    public void insert(Task task) {
+        jdbc.update(
+                "insert into task (taskname, creationdate, statusid, personid) values(?,current_date, ?,?)",
+                task.getTaskName(), task.getStatusId(), task.getPersonId());
+    }
 }
 

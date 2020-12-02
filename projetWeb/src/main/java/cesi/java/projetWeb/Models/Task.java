@@ -10,6 +10,7 @@ public class Task {
     private Date creationDate;
     private Date updatedOn ;
     private int statusId;
+    private int personId;
 
     public int getStatusId() {
         return statusId;
@@ -58,6 +59,14 @@ public class Task {
 
     public Integer getId() {
         return id;
+    }
+
+    public int getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     public Task() {
