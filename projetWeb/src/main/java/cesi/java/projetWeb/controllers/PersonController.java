@@ -15,22 +15,46 @@ public class PersonController {
         this.personRepository = personRepository;
     }
 
+    // Mapping all persons
     @GetMapping("/persons")
     List<Person> All()  {
         return personRepository.findAll();
     }
 
-    @GetMapping("/persons/{id}")
+    // Mapping get one person by Id
+    @GetMapping(value="/persons",params = "id")
     public @ResponseBody
-    Person One(@PathVariable("id") String id) {
+    Person One(@RequestParam(name = "id") String id) {
         int intId = Integer.parseInt(id);
         return personRepository.findOne(intId);
+    }
+
+    // Mapping get list by RoleId
+    @GetMapping(value = "/persons", params = "roleId")
+    public @ResponseBody
+    List<Person> ByRoleId(@RequestParam(name = "roleId") String roleId) {
+        int intRoleId = Integer.parseInt(roleId);
+        return personRepository.getPersonByRoleId(intRoleId);
     }
 
     @PostMapping("/persons")
     public @ResponseBody
     void insert(@RequestBody Person person) {
         personRepository.insert(person);
+    }
+
+    @PutMapping(value = "/persons",params = "id")
+    public @ResponseBody
+    void update(@RequestBody Person person,  @RequestParam(name = "id") String id) {
+        int intId = Integer.parseInt(id);
+        personRepository.update(person, intId);
+    }
+
+    @DeleteMapping(value = "/persons", params = "id")
+    public @ResponseBody
+    void delete(@RequestParam(name="id") String id) {
+        int intId = Integer.parseInt(id);
+        personRepository.delete(intId);
     }
 
 }

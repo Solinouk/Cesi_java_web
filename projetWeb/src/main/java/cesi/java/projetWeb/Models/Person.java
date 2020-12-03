@@ -1,9 +1,13 @@
 package cesi.java.projetWeb.Models;
 
+import java.util.Date;
+
 public class Person {
     private int id;
     private String name;
     private String alias;
+    private Date creationDate;
+    private Date updatedOn;
     private int roleId;
 
     public int getId() {
@@ -36,6 +40,22 @@ public class Person {
 
     public void setRoleId(int roleId) {
         this.roleId = roleId;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Date getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public void setUpdatedOn(Date updatedOn) {
+        this.updatedOn = updatedOn;
     }
 
     public Person(){

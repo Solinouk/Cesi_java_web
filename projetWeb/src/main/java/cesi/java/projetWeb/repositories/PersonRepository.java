@@ -24,7 +24,7 @@ public class PersonRepository {
     }
 
     public Person findOne(int id) {
-        String sql = "SELECT id, name, alias, creationdate, updatedon, roleid, FROM person WHERE id = ?";
+        String sql = "SELECT id, name, alias, creationdate, updatedon, roleid FROM person WHERE id = ?";
 
         return (Person) jdbc.queryForObject(
                 sql,
@@ -36,5 +36,25 @@ public class PersonRepository {
         jdbc.update(
                 "insert into person (name, alias, creationdate, roleid) values(?,?,current_date,?)",
                 person.getName(), person.getAlias(), person.getRoleId());
+    }
+
+    public List<Person> getPersonByRoleId(int roleId) {
+        String sql = "SELECT id, name, alias, creationdate, updatedon, roleid FROM person WHERE roleId = ?";
+        List<Person> persons = jdbc.query(
+                sql,
+                new Object[]{roleId},
+                new BeanPropertyRowMapper(Person.class));
+        return persons;
+    }
+
+    public void update(Person person, int id) {
+        jdbc.update(
+                "update person set name = ?, alias = ?, roleid = ?, updatedon = current_date where id = ?",
+                person.getName(), person.getAlias(), person.getRoleId(), id);
+    }
+
+    public void delete(int id) {
+        jdbc.update(
+                "delete from person WHERE id = ?", id);
     }
 }
