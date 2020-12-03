@@ -1,6 +1,7 @@
 package cesi.java.projetWeb.Models;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -10,24 +11,36 @@ public class Task  implements Serializable {
     private String taskName;
     private Date creationDate;
     private Date updatedOn ;
-    private int statusId;
-    private int personId;
+    /*private int statusId;
+    private int personId;*/
+    private Status status;
+    private Person person;
 
     public Task() {
     }
 
-    public Task(int id, String taskName, Date creationDate, Date updatedOn, int statusId, int personId) {
+    public Task(int id, String taskName, Date creationDate, Status status, Person person) {
         this.id = id;
         this.taskName = taskName;
-        this.creationDate = creationDate;
-        this.updatedOn = updatedOn;
-        this.statusId = statusId;
-        this.personId = personId;
+        this.creationDate = new Date();
+        this.status = status;
+        this.person = person;
     }
 
-    public Task(int id, String taskName) {
-        this.id = id;
-        this.taskName = taskName;
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public int getId() {
@@ -62,19 +75,4 @@ public class Task  implements Serializable {
         this.updatedOn = updatedOn;
     }
 
-    public int getStatusId() {
-        return statusId;
     }
-
-    public void setStatusId(int statusId) {
-        this.statusId = statusId;
-    }
-
-    public int getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(int personId) {
-        this.personId = personId;
-    }
-}

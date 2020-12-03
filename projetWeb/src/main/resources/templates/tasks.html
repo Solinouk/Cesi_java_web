@@ -15,12 +15,18 @@
             <th>Libellé de la tâche</th>
             <th>Statut</th>
             <th>Personne</th>
+            <th>Pseudo</th>
+            <th>Créée le</th>
+            <th>Mise à jour le</th>
         </tr>
 
         <tr th:each="task : ${tasks}">
             <td th:utext="${task.taskName}">...</td>
-            <td th:utext="${task.statusId}">...</td>
-            <td th:utext="${task.personId}">...</td>
+            <td th:utext="${task.status.statusName}">...</td>
+            <td th:utext="${task.person.name}">...</td>
+            <td th:utext="${task.person.alias}">...</td>
+            <td th:utext="${task.creationDate}">...</td>
+            <td th:utext="${task.updatedOn}">...</td>
         </tr>
     </table>
 </div>

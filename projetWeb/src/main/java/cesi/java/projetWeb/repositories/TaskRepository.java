@@ -1,11 +1,16 @@
 package cesi.java.projetWeb.repositories;
 
+import cesi.java.projetWeb.Models.Person;
+import cesi.java.projetWeb.Models.Status;
 import cesi.java.projetWeb.Models.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -14,11 +19,40 @@ public class TaskRepository {
     @Autowired
     JdbcTemplate jdbc;
 
+    public class TaskMapper implements RowMapper<Task> {
+        ResultSet rs;
+
+        @Override
+        public Task mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Task task = new Task();
+            Status status = new Status();
+            Person person = new Person();
+
+            task.setUpdatedOn(rs.getDate("updatedon"));
+            task.setCreationDate(rs.getDate("creationDate"));
+            task.setTaskName(rs.getString("taskname"));
+            task.setId(rs.getInt("id"));
+
+            status.setStatusName((rs.getString("statusname")));
+
+            person.setName((rs.getString("name")));
+            person.setAlias((rs.getString("alias")));
+
+            task.setStatus(status);
+            task.setPerson(person);
+            return task;
+        }
+    }
+
     public List<Task> findAll() {
 
-        String sql = "SELECT id, taskname, creationdate, updatedon, statusid, personid FROM task";
+        String sql = "SELECT t.id, t.taskname, t.creationdate, t.updatedon, p.name, p.alias, s.statusname " +
+                " FROM task t " +
+                " left join status s on s.id = t.statusId" +
+                " left join person p on t.personid = p.id";
+        TaskMapper rowMapper = new TaskMapper();
 
-        return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class));
+        return jdbc.query(sql, rowMapper);
     }
 
     public Task findOne(int id) {
@@ -33,8 +67,8 @@ public class TaskRepository {
 
     public void insert(Task task) {
         jdbc.update(
-                "insert into task (taskname, creationdate, statusid, personid) values(?,current_date, ?,?)",
-                task.getTaskName(), task.getStatusId(), task.getPersonId());
+                "insert into task (taskname, creationdate, statusid, personid) values(?,? ?,?)",
+                task.getTaskName(), task.getCreationDate(), task.getStatus().getId(), task.getPerson().getId());
     }
 
     public void update(Task task, int id) {
@@ -57,4 +91,5 @@ public class TaskRepository {
                 new BeanPropertyRowMapper<>(Task.class));
     }
 }
+
 
