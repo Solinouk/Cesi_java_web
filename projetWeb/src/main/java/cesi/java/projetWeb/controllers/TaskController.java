@@ -3,14 +3,14 @@ package cesi.java.projetWeb.controllers;
 
 import cesi.java.projetWeb.Models.Task;
 import cesi.java.projetWeb.repositories.TaskRepository;
-import org.springframework.util.StringUtils;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
+
+
 
 
 @RestController
@@ -45,7 +45,8 @@ public class TaskController {
     }
 
 
-    @GetMapping("/tasks")
+
+    /*@GetMapping("/tasks")
     public @ResponseBody
     List<Task> getTasks(@RequestParam(name = "statusId", required = false) String statusId,
                         @RequestParam(name = "id", required = false) String id) {
@@ -61,5 +62,5 @@ public class TaskController {
         else {
             return taskRepository.findAll();
         }
-    }
+    }*/
 }
