@@ -19,6 +19,10 @@ public class Task  implements Serializable {
     public Task() {
     }
 
+    public Task(String taskName) {
+        this.taskName = taskName;
+    }
+
     public Task(int id, String taskName, Date creationDate, Status status, Person person) {
         this.id = id;
         this.taskName = taskName;
@@ -75,4 +79,16 @@ public class Task  implements Serializable {
         this.updatedOn = updatedOn;
     }
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", taskName='" + taskName + '\'' +
+                ", creationDate=" + creationDate +
+                ", updatedOn=" + updatedOn +
+                ", status=" + status +
+                ", person=" + person +
+                '}';
     }
+}
+

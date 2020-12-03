@@ -11,8 +11,6 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 
 
-
-
 @RestController
 @RequestMapping("/api/v1")
 public class TaskController {
@@ -44,7 +42,13 @@ public class TaskController {
         taskRepository.delete(intId);
     }
 
-
+    @GetMapping("/tasks")
+    public @ResponseBody
+    String getTasks(Model model)
+    {
+        model.addAttribute("tasks", taskRepository.findAll());
+        return "tasks";
+    }
 
     /*@GetMapping("/tasks")
     public @ResponseBody
