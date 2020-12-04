@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Persons List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/main.css}"/>
+
+</head>
+<body>
+<h1 class="text-center">Liste de personnes</h1>
+
+
+<div style="overflow-x:auto;">
+
+    <table id="persons">
+        <tr>
+            <th>Nom de la personne</th>
+            <th>Pseudo</th>
+            <th>Role</th>
+            <th>Créée le</th>
+            <th>Mise à jour le</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+
+        <tr th:each="person : ${persons}">
+            <td th:utext="${person.name}">...</td>
+            <td th:utext="${person.alias}">...</td>
+            <td th:utext="${person.role.roleName}">...</td>
+            <td th:utext="${person.creationDate}">...</td>
+            <td th:utext="${person.updatedOn}">...</td>
+            <td><a th:href="@{/edit-persons/{id}(id=${person.id})}">Edit</a></td>
+            <td><a th:href="@{/delete-person/{id}(id=${person.id})}">Delete</a></td>
+        </tr>
+    </table>
+</div>
+<a href="/add-persons"> <button class="btn-primary">ajouter une personne </button></a>
+</body>
+</html>
