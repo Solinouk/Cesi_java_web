@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+#tasks {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tasks td, #tasks th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tasks tr:nth-child(even){background-color: #ebebeb;}
+
+#tasks tr:hover {background-color: #fa765d9b;}
+
+#tasks th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #fa765dff;
+    color: white;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6f5f7;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 50px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.pricing-box-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pricing-box {
+    background-color: #ffffff;
+    box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.5);
+    border-radius: 4px;
+    flex: 1;
+    padding: 0 30px 30px;
+    margin: 2%;
+    min-width: 250px;
+    max-width: 350px;
+}
+
+.pricing-box h5 {
+    text-transform: uppercase;
+}
+
+
+.features-list {
+    padding: 20px;
+    list-style-type: none;
+}
+
+.features-list li {
+    font-weight: 100;
+    padding: 12px 0;
+}
+
+
+.features-list li:not(:last-of-type) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+.btn-primary {
+    border-radius: 25px;
+    border: none;
+    background-color: #15748bff;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px 15px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn-primary:hover {
+    box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.5);
+    transform: translateY(-3px);
+}
+
+.pricing-box-bg-image {
+    background-image: url('https://images.unsplash.com/photo-1606046752890-887b91d22cce?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDEwN3xibzhqUUtUYUUwWXx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60');
+    background-size: cover;
+    background-position: center center;
+    color: #ffffff;
+}
+
+.pricing-box-bg-image .features-list li {
+    border-bottom-color: rgba(255, 255, 255, 1);
+}
+
+
+.pricing-box-bg-image .btn-primary {
+    background-color: #ffffff;
+    color: #000;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer i {
+    color: red;
+}
+
+footer a {
+    color: #3C97BF;
+    text-decoration: none;
+}
+

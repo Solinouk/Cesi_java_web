@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Tasks List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/main.css}"/>
+
+</head>
+<body>
+<h1 class="text-center">Liste de tâches</h1>
+
+
+<div style="overflow-x:auto;">
+
+    <table id="tasks">
+        <tr>
+            <th>Libellé de la tâche</th>
+            <th>Statut</th>
+            <th>Personne</th>
+            <th>Pseudo</th>
+            <th>Créée le</th>
+            <th>Mise à jour le</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+
+        <tr th:each="task : ${tasks}">
+            <td th:utext="${task.taskName}">...</td>
+            <td th:utext="${task.status.statusName}">...</td>
+            <td th:utext="${task.person.name}">...</td>
+            <td th:utext="${task.person.alias}">...</td>
+            <td th:utext="${task.creationDate}">...</td>
+            <td th:utext="${task.updatedOn}">...</td>
+            <td><a th:href="@{/edit-tasks/{id}(id=${task.id})}">Edit</a></td>
+            <td><a th:href="@{/delete/{id}(id=${task.id})}">Delete</a></td>
+        </tr>
+    </table>
+</div>
+<a href="/add-tasks"> <button class="btn-primary">ajouter une tâche </button></a>
+</body>
+</html>
+

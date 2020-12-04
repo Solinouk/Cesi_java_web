@@ -3,11 +3,10 @@ package cesi.java.projetWeb.controllers;
 
 import cesi.java.projetWeb.Models.Task;
 import cesi.java.projetWeb.repositories.TaskRepository;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
@@ -44,8 +43,24 @@ public class TaskController {
         taskRepository.delete(intId);
     }
 
-
     @GetMapping("/tasks")
+    public @ResponseBody
+    String getTasks(Model model)
+    {
+        model.addAttribute("tasks", taskRepository.findAll());
+        return "tasks";
+    }
+
+ /*   @GetMapping("/tasks/{id}")
+    Task getTasks(@PathVariable  String id)
+    {
+        int intId = Integer.parseInt(id);
+        return taskRepository.findOne(intId);
+
+    }*/
+
+
+   /* @GetMapping("/tasks")
     public @ResponseBody
     List<Task> getTasks(@RequestParam(name = "statusId", required = false) String statusId,
                         @RequestParam(name = "id", required = false) String id) {
@@ -61,5 +76,5 @@ public class TaskController {
         else {
             return taskRepository.findAll();
         }
-    }
+    }*/
 }
