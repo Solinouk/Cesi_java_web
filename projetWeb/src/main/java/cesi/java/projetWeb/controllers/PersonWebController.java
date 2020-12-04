@@ -57,10 +57,13 @@ public class PersonWebController {
 
     @PostMapping(value = "/edit-persons/{id}")
     public String update(@ModelAttribute Person person, Model model, @PathVariable int id) {
+        Person personInDb = personRepository.findOne(id);
+        personInDb.setAlias(person.getAlias());
+        personInDb.setName(person.getName());
 
-        personRepository.update(person, id);
-        model.addAttribute("persons", personRepository.findAll());
-        return "persons";
+        personRepository.update(personInDb, id);
+
+        return "redirect:/persons";
     }
 
     @GetMapping("/delete-person/{id}")

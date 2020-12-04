@@ -25,13 +25,14 @@ public class PersonRepository {
             Person person = new Person();
             Role role = new Role();
 
-            person.setName((rs.getString("name")));
-            person.setAlias((rs.getString("alias")));
-            person.setCreationDate((rs.getDate("creationDate")));
-            person.setUpdatedOn((rs.getDate("updatedOn")));
+            person.setId(rs.getInt("id"));
+            person.setName(rs.getString("name"));
+            person.setAlias(rs.getString("alias"));
+            person.setCreationDate(rs.getDate("creationDate"));
+            person.setUpdatedOn(rs.getDate("updatedOn"));
 
-            role.setId((rs.getInt("id")));
-            role.setRoleName((rs.getString("roleName")));
+            role.setId(rs.getInt("id"));
+            role.setRoleName(rs.getString("roleName"));
 
             person.setRole(role);
             return person;
@@ -40,7 +41,7 @@ public class PersonRepository {
 
     public List<Person> findAll() {
 
-        String sql = "SELECT p.id, p.name, p.alias, r.roleName, p.creationdate, p.updatedon FROM person p JOIN role r ON p.roleId = r.id";
+        String sql = "SELECT p.id, p.name, p.alias, r.roleName, p.creationdate, p.updatedon FROM person p JOIN role r ON p.roleId = r.id ORDER BY p.id";
         PersonMapper rowMapper = new PersonMapper();
         List<Person> persons = jdbc.query(sql, rowMapper);
         return persons;
