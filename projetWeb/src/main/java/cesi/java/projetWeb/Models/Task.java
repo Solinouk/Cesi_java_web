@@ -19,11 +19,12 @@ public class Task  implements Serializable {
     public Task() {
     }
 
+
     public Task(String taskName) {
         this.taskName = taskName;
     }
 
-    public Task(int id, String taskName, Date creationDate, Status status, Person person) {
+    public Task(int id, String taskName, Status status, Person person) {
         this.id = id;
         this.taskName = taskName;
         this.creationDate = new Date();

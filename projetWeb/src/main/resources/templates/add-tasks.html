@@ -10,7 +10,7 @@
 <h1>Ajouter une tâche</h1>
 
 
-<form th:action="@{/add-tasks}" th:object="${task}" method="post">
+<form th:action="@{/add-tasks}" th:object="${task}"  method="post">
     <label for="name">Libellé de votre tâche </label>
     <input type="text"  th:field="*{taskName}" placeholder="Inscrivez votre tâche">
     <input type="submit" value="Ajouter une tâche">

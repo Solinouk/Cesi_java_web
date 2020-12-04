@@ -57,18 +57,23 @@ public class TaskRepository {
 
     public Task findOne(int id) {
 
-        String sql = "SELECT id, taskname, creationdate, updatedon, statusid, personid FROM task WHERE id =" +
+        String sql = "SELECT t.id, t.taskname, t.creationdate, t.updatedon, p.name, p.alias, s.statusname " +
+                "FROM task t  left join status s on s.id = t.statusId left join person p on t.personid = p.id WHERE t.id =" +
                 id;
+        TaskMapper rowMapper = new TaskMapper();
 
-        return (Task) jdbc.query(
-                sql,
-                new BeanPropertyRowMapper(Task.class));
+        Task task = jdbc.queryForObject(
+                sql, rowMapper);
+        System.out.println(task);
+        return task;
     }
 
     public void insert(Task task) {
+
         jdbc.update(
-                "insert into task (taskname, creationdate, statusid, personid) values(?,? ?,?)",
-                task.getTaskName(), task.getCreationDate(), task.getStatus().getId(), task.getPerson().getId());
+                "insert into task (taskname, creationdate, statusId, personid) values(?,current_date, ?,?)",
+                task.getTaskName(),task.getStatus().getId(), task.getPerson().getId());
+        System.out.println(task.getPerson().getId());
     }
 
     public void update(Task task, int id) {

@@ -4,6 +4,7 @@ package cesi.java.projetWeb.controllers;
 import cesi.java.projetWeb.Models.Task;
 import cesi.java.projetWeb.repositories.TaskRepository;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,7 +51,16 @@ public class TaskController {
         return "tasks";
     }
 
-    /*@GetMapping("/tasks")
+ /*   @GetMapping("/tasks/{id}")
+    Task getTasks(@PathVariable  String id)
+    {
+        int intId = Integer.parseInt(id);
+        return taskRepository.findOne(intId);
+
+    }*/
+
+
+   /* @GetMapping("/tasks")
     public @ResponseBody
     List<Task> getTasks(@RequestParam(name = "statusId", required = false) String statusId,
                         @RequestParam(name = "id", required = false) String id) {
