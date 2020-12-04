@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Persons List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<h1>Ajouter une Personne</h1>
+
+
+<form method="post" th:action="@{/edit-persons/{id}(id=${person.id})}" th:object="${person}">
+    <label for="name">Nom de la personne </label>
+    <input type="text"  th:field="*{name}" id="name" placeholder="Nom de la personne">
+    <label for="alias">Nom de la personne </label>
+    <input type="text"  th:field="*{alias}" id="alias" placeholder="Nom de la personne">
+    <!--
+    <label for="name">Nom de la personne </label>
+    <input type="text"  th:field="*{roleName}" id="roleName" placeholder="Nom de la personne">
+    -->
+    <input type="submit" value="Mettre à jour">
+</form>
+
+
+
+</div>
+</body>
+</html>

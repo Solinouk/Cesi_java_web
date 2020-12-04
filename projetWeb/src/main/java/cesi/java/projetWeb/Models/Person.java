@@ -8,7 +8,7 @@ public class Person {
     private String alias;
     private Date creationDate;
     private Date updatedOn;
-    private int roleId;
+    private Role role;
 
     public int getId() {
         return id;
@@ -34,12 +34,12 @@ public class Person {
         this.alias = alias;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Date getCreationDate() {
@@ -62,8 +62,18 @@ public class Person {
 
     }
 
-    public Person(String pName, String pAlias) {
+    public Person(String pName, String pAlias, Role pRole) {
         this.name = pName;
         this.alias = pAlias;
+        this.role = pRole;
+    }
+
+    public Person(int id, String name, String alias, Date creationDate, Date updatedOn, Role role) {
+        this.id = id;
+        this.name = name;
+        this.alias = alias;
+        this.creationDate = creationDate;
+        this.updatedOn = updatedOn;
+        this.role = role;
     }
 }
