@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8" />
     <title>Tasks List</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/main.css}"/>
 </head>
 <body>
 
-<h1>Ajouter une tâche</h1>
+<h1 class="text-center">Ajouter une tâche</h1>
 
 
+<div class="pricing-box-container">
+    <div class="pricing-box text-center">
+    </br>
 <form th:action="@{/add-tasks}" th:object="${task}"  method="post">
     <label for="name">Libellé de votre tâche </label>
-    <input type="text"  th:field="*{taskName}" placeholder="Inscrivez votre tâche">
-    <input type="submit" value="Ajouter une tâche">
+    <input type="text"  th:field="*{taskName}" id="name" placeholder="Inscrivez votre tâche">
+    <button class="btn-primary"  type="submit" >Ajouter une tâche</button>
 </form>
-
+</div>
+</div>
 
 
 </div>

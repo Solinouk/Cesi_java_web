@@ -1,23 +1,26 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8" />
     <title>Tasks List</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/main.css}"/>
 </head>
 <body>
 
-<h1>Modifier une tâche</h1>
+<h1 class="text-center">Modifier une tâche</h1>
 
 
-
+<div class="pricing-box-container">
+    <div class="pricing-box text-center">
+    </br>
 <form method="post" th:action="@{/edit-tasks/{id}(id=${task.id})}" th:object="${task}">
-    <label for="name">Name</label>
+    <label for="name">Libellé</label>
     <input type="text" th:field="*{taskName}" id="name" placeholder="Name">
-    <input type="submit" value="Mettre à jour">
+    <button class="btn-primary"  type="submit" >Mettre à jour une tâche</button>
 </form>
 
-
+    </div>
+</div>
 
 
 

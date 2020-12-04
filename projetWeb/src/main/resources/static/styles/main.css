@@ -53,8 +53,9 @@ body {
     padding: 0 30px 30px;
     margin: 2%;
     min-width: 250px;
-    max-width: 350px;
+
 }
+
 
 .pricing-box h5 {
     text-transform: uppercase;
